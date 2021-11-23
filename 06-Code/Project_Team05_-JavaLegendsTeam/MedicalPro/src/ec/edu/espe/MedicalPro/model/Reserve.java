@@ -1,8 +1,10 @@
+package ec.edu.espe.MedicalPro.model;
+
 /**
  *
  * @Daniel Lincango
  */
-public class SCHEDULE {
+public class Reserve {
 
     private String day;
     private String month;
