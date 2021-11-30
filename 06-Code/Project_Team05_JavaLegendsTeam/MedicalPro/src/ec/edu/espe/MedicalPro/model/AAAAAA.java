@@ -6,8 +6,8 @@ package ec.edu.espe.MedicalPro.model;
 
 /**
  *
- * @author Jose Guzman
+ * @author jhona
  */
-class Availability {
-    
+public class AAAAAA {
+    ///hola mundo 
 }
