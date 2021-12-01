@@ -6,8 +6,8 @@ package ec.edu.espe.MedicalPro.model;
 
 /**
  *
- * @author WINDOWS 10
+ * @author jhona
  */
-public class BCSDB {
+class Dates {
     
 }
