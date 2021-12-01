@@ -6,8 +6,16 @@ package ec.edu.espe.MedicalPro.model;
 
 /**
  *
- * @author jhona
+ * @author GUITARRA JHON
  */
-public class AAAAAA {
-    ///hola mundo 
+public class Dates {
+
+    public Dates() {
+    }
+
+    @Override
+    public String toString() {
+        return "Dates{" + '}';
+    }
+    
 }

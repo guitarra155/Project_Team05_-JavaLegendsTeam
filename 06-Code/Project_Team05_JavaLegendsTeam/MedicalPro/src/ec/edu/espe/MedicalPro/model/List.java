@@ -6,8 +6,8 @@ package ec.edu.espe.MedicalPro.model;
 
 /**
  *
- * @author WINDOWS 10
+ * @author mateo
  */
-public class BCSDB {
+public class List {
     
 }
