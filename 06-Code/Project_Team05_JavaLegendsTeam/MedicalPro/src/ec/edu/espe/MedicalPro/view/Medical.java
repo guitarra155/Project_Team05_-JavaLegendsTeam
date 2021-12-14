@@ -1,7 +1,9 @@
 package ec.edu.espe.MedicalPro.view;
 
 import ec.edu.espe.MedicalPro.model.Login;
+import ec.edu.espe.MedicalPro.model.Account;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
@@ -10,7 +12,6 @@ import java.util.Scanner;
 
 public class Medical {
     public static void main(String[] args) {
-        
         String nameUser = "null";
         String passwordUser = "null";
         
@@ -23,6 +24,6 @@ public class Medical {
         passwordUser = read.next();
         login = new Login(nameUser,passwordUser);
         System.out.println("Data of User --> "+ login);
-       
+
     }
 }
