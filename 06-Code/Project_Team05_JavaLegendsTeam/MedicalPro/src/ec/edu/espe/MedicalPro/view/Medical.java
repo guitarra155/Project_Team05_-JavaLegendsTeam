@@ -2,10 +2,23 @@ package ec.edu.espe.MedicalPro.view;
 
 import ec.edu.espe.MedicalPro.model.Login;
 import java.util.Scanner;
+import ec.edu.espe.MedicalPro.model.Account;
+import ec.edu.espe.MedicalPro.model.Appointment;
+import ec.edu.espe.MedicalPro.model.Clinic;
+import ec.edu.espe.MedicalPro.model.Doctor;
+import ec.edu.espe.MedicalPro.model.History;
+import ec.edu.espe.MedicalPro.model.Itinerary;
+import ec.edu.espe.MedicalPro.model.List;
+import ec.edu.espe.MedicalPro.model.Login;
+import ec.edu.espe.MedicalPro.model.Medicine;
+import ec.edu.espe.MedicalPro.model.Patient;
+import ec.edu.espe.MedicalPro.model.Register;
+
+    
 
 /**
  *
- * @author GUITARRA JHON
+ * @author GProject_Team05_JavaLegendsTeam
  */
 
 public class Medical {
@@ -23,6 +36,8 @@ public class Medical {
         passwordUser = read.next();
         login = new Login(nameUser,passwordUser);
         System.out.println("Data of User --> "+ login);
+        
+        
        
     }
 }
