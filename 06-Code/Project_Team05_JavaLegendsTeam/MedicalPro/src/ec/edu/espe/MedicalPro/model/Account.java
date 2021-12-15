@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ec.edu.espe.MedicalPro.model;
-
+import java.util.ArrayList;
 /**
  *
  * @author Jose Guzman
@@ -11,7 +11,20 @@ package ec.edu.espe.MedicalPro.model;
 public class Account {
     private String nameUser;
     private String password;
-
+    private ArrayList<Account> accounts;
+    
+    public void add(Account account){
+        accounts.add(account);
+    }
+    
+    public void remove(Account account){
+        accounts.remove(account);
+    }
+    
+    public int countAccounts(){
+        return accounts.size();
+    }
+    
     @Override
     public String toString() {
         return "Account{" + "nameUser=" + nameUser + ", password=" + password + '}';

@@ -1,7 +1,9 @@
 package ec.edu.espe.MedicalPro.view;
 
 import ec.edu.espe.MedicalPro.model.Login;
+import ec.edu.espe.MedicalPro.model.Account;
 import java.util.Scanner;
+<<<<<<< HEAD
 import ec.edu.espe.MedicalPro.model.Account;
 import ec.edu.espe.MedicalPro.model.Appointment;
 import ec.edu.espe.MedicalPro.model.Clinic;
@@ -15,6 +17,9 @@ import ec.edu.espe.MedicalPro.model.Patient;
 import ec.edu.espe.MedicalPro.model.Register;
 
     
+=======
+import java.util.ArrayList;
+>>>>>>> 6e45a664702207033d3a45a199a1af485f40e47b
 
 /**
  *
@@ -23,7 +28,6 @@ import ec.edu.espe.MedicalPro.model.Register;
 
 public class Medical {
     public static void main(String[] args) {
-        
         String nameUser = "null";
         String passwordUser = "null";
         
@@ -36,8 +40,12 @@ public class Medical {
         passwordUser = read.next();
         login = new Login(nameUser,passwordUser);
         System.out.println("Data of User --> "+ login);
+<<<<<<< HEAD
         
         
        
+=======
+
+>>>>>>> 6e45a664702207033d3a45a199a1af485f40e47b
     }
 }
