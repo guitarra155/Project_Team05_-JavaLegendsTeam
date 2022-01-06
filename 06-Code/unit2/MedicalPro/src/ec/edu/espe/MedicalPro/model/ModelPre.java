@@ -15,18 +15,18 @@ import java.util.Observer;
  */
 
 public class ModelPre extends Observable{
-    private Personal f;
+    private Personal function;
 
     public ModelPre() {
-        f = new Personal();
+        function = new Personal();
     }
 
-    public Personal getF() {
-        return f;
+    public Personal getFunction() {
+        return function;
     }
 
-    public void setF(Personal f) {
-        this.f = f;
+    public void setFunction(Personal function) {
+        this.function = function;
         refresh();
     }
     

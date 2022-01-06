@@ -71,22 +71,22 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
 
     @Override
     public void update(Observable o, Object o1) {
-        Patient p = model.getP();
-        boolean e = model.isEditar();
+        Patient p = model.getPatient();
+        boolean e = model.isColumns();
         if (e) {
             ahabilitar();
             textCed.setEnabled(false);
         }
-        textApe1.setText(p.getApellido1());
-        textApe2.setText(p.getApellido2());
-        textNombre.setText(p.getNombre());
-        textCed.setText(p.getCedula());
-        textArea.setText(p.getPatologia());
-        tablita.setModel(model.getTabla());
+        textApe1.setText(p.getFatherLastName());
+        textApe2.setText(p.getMotherLastName());
+        textNombre.setText(p.getName());
+        textCed.setText(p.getDocumentId());
+        textArea.setText(p.getDiagnosis());
+        tablita.setModel(model.getTable());
         textBuscar.setText("");
-        if (p.getFecha() != null) {
+        if (p.getDate() != null) {
             try {
-                java.util.Date fe = new SimpleDateFormat("dd/MM/yyyy").parse(p.getFecha());
+                java.util.Date fe = new SimpleDateFormat("dd/MM/yyyy").parse(p.getDate());
                 fecha.setValue(fe);
             } catch (ParseException ex) {
                 Logger.getLogger(ViewPatient.class.getName()).log(Level.SEVERE, null, ex);
@@ -453,7 +453,7 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String fe = formatter.format(fecha.getValue());
         if(valida(nom, ape1, ape2, ced, pato)){
-            control.agregar(model.isEditar(), nom, ape1, ape2, ced, pato, fe);            
+            control.agregar(model.isColumns(), nom, ape1, ape2, ced, pato, fe);            
             desahabilitar();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed

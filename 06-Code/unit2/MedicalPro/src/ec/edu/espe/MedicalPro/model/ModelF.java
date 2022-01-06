@@ -19,28 +19,28 @@ import java.util.Observer;
 
 public class ModelF extends Observable{
     private List<Personal> row;
-    private boolean editar;
-    private Personal f;
-    private TableModelF tablita;
+    private boolean edit;
+    private Personal funtion;
+    private TableModelF columns;
     private int[] cols = {0,1,2,3,4};
 
     public ModelF() {
-        editar = false;
+        edit = false;
         row = new ArrayList<>();
-        f = new Personal();
-        tablita = new TableModelF(row, cols);
+        funtion = new Personal();
+        columns = new TableModelF(row, cols);
     }
 
-    public boolean isEditar() {
-        return editar;
+    public boolean isEdit() {
+        return edit;
     }
 
-    public void setEditar(boolean editar) {
-        this.editar = editar;
+    public void setEdit(boolean edit) {
+        this.edit = edit;
     }
 
-    public TableModelF getTablita() {
-        return tablita;
+    public TableModelF getColumns() {
+        return columns;
     }
 
     public List<Personal> getRow() {
@@ -48,16 +48,16 @@ public class ModelF extends Observable{
     }
 
     public void setRow(List<Personal> r) {
-        tablita = new TableModelF(r, cols);
+        columns = new TableModelF(r, cols);
         refresh();
     }
 
-    public Personal getF() {
-        return f;
+    public Personal getFuntion() {
+        return funtion;
     }
 
-    public void setF(Personal f) {
-        this.f = f;
+    public void setFuntion(Personal funtion) {
+        this.funtion = funtion;
         refresh();
     }
     

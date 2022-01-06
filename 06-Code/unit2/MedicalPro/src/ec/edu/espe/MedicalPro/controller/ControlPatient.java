@@ -43,12 +43,12 @@ public class ControlPatient {
             JOptionPane.showMessageDialog(null, e.getMessage());
             
         }
-        model.setP(new Patient());
-        model.setEditar(false);
+        model.setPatient(new Patient());
+        model.setColumns(false);
     }
 
     public void cancelar() {
-        model.setP(new Patient());
+        model.setPatient(new Patient());
     }
 
     public void buscarPaciente(String b) {
@@ -66,16 +66,16 @@ public class ControlPatient {
     }
 
     public void editar() {
-        model.setEditar(true);
+        model.setColumns(true);
     }
 
     public void recuperarEditable(int row) {
-        Patient p = model.getTabla().getRowAt(row);
-        model.setP(p);
+        Patient p = model.getTable().getRowAt(row);
+        model.setPatient(p);
     }
 
     public void eliminar(int x) {
-        Patient p = model.getTabla().getRowAt(x);
+        Patient p = model.getTable().getRowAt(x);
         ec.edu.espe.MedicalPro.model.ModelData.getInstance().eliminarPaciente(p);
         List<Patient> row = ec.edu.espe.MedicalPro.model.ModelData.getInstance().getPacientes();
         model.setRow(row);

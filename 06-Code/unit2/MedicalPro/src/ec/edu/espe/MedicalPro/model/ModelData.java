@@ -32,8 +32,8 @@ public class ModelData {
     }
     
     public void addPaciente(Patient p) throws Exception {
-        if(patient.get(p.getCedula()) == null){
-            patient.put(p.getCedula(), p);
+        if(patient.get(p.getDocumentId()) == null){
+            patient.put(p.getDocumentId(), p);
         }else{
             throw new Exception("Patient already exists");
         }
@@ -58,7 +58,7 @@ public class ModelData {
     public Personal getAcceso(String usuario, String clave) throws Exception {
         for (Map.Entry<String, Personal> entry : personal.entrySet()) {
             Personal f = entry.getValue();
-            if(f.getClave().equals(clave) && f.getUsuario().equals(usuario)){
+            if(f.getPassword().equals(clave) && f.getUsername().equals(usuario)){
                 return f;
             }
             
@@ -77,7 +77,7 @@ public class ModelData {
             almacen = new BufferedReader(leer);
             aux = per.cargarDatos(almacen);
             while(aux != null){
-                patient.put(aux.getCedula(), aux);
+                patient.put(aux.getDocumentId(), aux);
                 aux = per.cargarDatos(almacen);
             }
             leer.close();
@@ -97,7 +97,7 @@ public class ModelData {
             almacen = new BufferedReader(leer);
             aux = per.cargarDatos(almacen);
             while(aux != null){
-                personal.put(aux.getCedula(), aux);
+                personal.put(aux.getDocumentId(), aux);
                 aux = per.cargarDatos(almacen);
             }
             leer.close();
@@ -166,36 +166,36 @@ public class ModelData {
     }
 
     public void modificarPaciente(Patient p) {
-        Patient pa = patient.get(p.getCedula());
+        Patient pa = patient.get(p.getDocumentId());
         if(pa != null){
-            pa.setNombre(p.getNombre());
-            pa.setApellido1(p.getApellido1());
-            pa.setApellido2(p.getApellido2());
-            pa.setFecha(p.getFecha());
-            pa.setPatologia(p.getPatologia());
+            pa.setName(p.getName());
+            pa.setFatherLastName(p.getFatherLastName());
+            pa.setMotherLastName(p.getMotherLastName());
+            pa.setDate(p.getDate());
+            pa.setDiagnosis(p.getDiagnosis());
         }
     }
 
     public void eliminarPaciente(Patient p) {
-        patient.remove(p.getCedula());
+        patient.remove(p.getDocumentId());
     }
 
     public void addFuncionario(Personal f) throws Exception {
-        if(personal.get(f.getCedula()) == null){
-            personal.put(f.getCedula(), f);
+        if(personal.get(f.getDocumentId()) == null){
+            personal.put(f.getDocumentId(), f);
         }else{
             throw new Exception("Official already exists");
         }
     }
 
     public void modificarFuncionario(Personal f) {
-        Personal pa = personal.get(f.getCedula());
+        Personal pa = personal.get(f.getDocumentId());
         if(pa != null){
-            pa.setNombre(f.getNombre());
-            pa.setApellido1(f.getApellido1());
-            pa.setApellido2(f.getApellido2());
-            pa.setClave(f.getClave());
-            pa.setUsuario(f.getUsuario());
+            pa.setName(f.getName());
+            pa.setFatherLastName(f.getFatherLastName());
+            pa.setMotherLastName(f.getMotherLastName());
+            pa.setPassword(f.getPassword());
+            pa.setUsername(f.getUsername());
             pa.setRol(f.getRol());
         }
     }
@@ -220,6 +220,6 @@ public class ModelData {
     }
 
     public void eliminarFuncionario(Personal p) {
-        personal.remove(p.getCedula());
+        personal.remove(p.getDocumentId());
     }
 }

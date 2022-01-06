@@ -19,25 +19,25 @@ import java.util.Observer;
 
 public class ModelI extends Observable{
 
-    private boolean editar;
-    private Patient p;
+    private boolean columns;
+    private Patient patient;
     private List<Patient> row;
     private int[] col = {0,1,2,3,4,5};
-    private TableModelI tabla;
+    private TableModelI table;
     
     public ModelI() {
-        editar = false;
+        columns = false;
         row = new ArrayList<>();
-        p = new Patient();
-        tabla = new TableModelI(row, col);
+        patient = new Patient();
+        table = new TableModelI(row, col);
     }
 
-    public boolean isEditar() {
-        return editar;
+    public boolean isColumns() {
+        return columns;
     }
 
-    public void setEditar(boolean editar) {
-        this.editar = editar;
+    public void setColumns(boolean columns) {
+        this.columns = columns;
     }
 
     public List<Patient> getRow() {
@@ -45,24 +45,24 @@ public class ModelI extends Observable{
     }
 
     public void setRow(List<Patient> ro) {
-        tabla = new TableModelI(ro, col);
+        table = new TableModelI(ro, col);
         refresh();
     }
 
-    public TableModelI getTabla() {
-        return tabla;
+    public TableModelI getTable() {
+        return table;
     }
 
-    public void setTabla(TableModelI tabla) {
-        this.tabla = tabla;
+    public void setTable(TableModelI table) {
+        this.table = table;
     }
 
-    public Patient getP() {
-        return p;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setP(Patient p) {
-        this.p = p;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
         refresh();
     }
     

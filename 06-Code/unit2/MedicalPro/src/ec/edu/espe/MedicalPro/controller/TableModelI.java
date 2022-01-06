@@ -40,12 +40,12 @@ public class TableModelI extends AbstractTableModel{
     public Object getValueAt(int i, int i1) {
         Patient p = row.get(i);
         switch(cols[i1]){
-            case 0:return p.getNombre();
-            case 1:return p.getApellido1();
-            case 2:return p.getApellido2();
-            case 3:return p.getCedula();
-            case 4:return p.getPatologia();
-            case 5:return p.getFecha();
+            case 0:return p.getName();
+            case 1:return p.getFatherLastName();
+            case 2:return p.getMotherLastName();
+            case 3:return p.getDocumentId();
+            case 4:return p.getDiagnosis();
+            case 5:return p.getDate();
             default: return "";
         }
     }

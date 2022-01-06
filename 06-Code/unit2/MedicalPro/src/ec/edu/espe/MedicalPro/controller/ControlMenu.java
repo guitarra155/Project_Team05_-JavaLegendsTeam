@@ -28,7 +28,7 @@ public class ControlMenu {
     }
 
     public void arrancar(Personal f) {
-        model.setF(f);
+        model.setFunction(f);
         view.setVisible(true);
     }
 

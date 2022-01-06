@@ -41,10 +41,10 @@ public class TableModelF extends AbstractTableModel{
     public Object getValueAt(int i, int i1) {
         Personal p = row.get(i);
         switch(cols[i1]){
-            case 0:return p.getNombre();
-            case 1:return p.getApellido1();
-            case 2:return p.getApellido2();
-            case 3:return p.getCedula();
+            case 0:return p.getName();
+            case 1:return p.getFatherLastName();
+            case 2:return p.getMotherLastName();
+            case 3:return p.getDocumentId();
             case 4:return p.getRol();
             default: return "";
         }

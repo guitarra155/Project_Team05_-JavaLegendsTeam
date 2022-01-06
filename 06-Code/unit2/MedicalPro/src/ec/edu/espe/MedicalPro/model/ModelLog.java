@@ -15,19 +15,19 @@ import java.util.Observer;
  */
 
 public class ModelLog extends Observable{
-    private Personal f;
+    private Personal funtion;
 
     public ModelLog() {
-        f = new Personal();
+        funtion = new Personal();
     }
 
     
-    public Personal getF() {
-        return f;
+    public Personal getFuntion() {
+        return funtion;
     }
 
-    public void setF(Personal f) {
-        this.f = f;
+    public void setFuntion(Personal funtion) {
+        this.funtion = funtion;
         refresh();
     }
     

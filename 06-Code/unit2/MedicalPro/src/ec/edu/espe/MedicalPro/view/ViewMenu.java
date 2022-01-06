@@ -48,11 +48,11 @@ public class ViewMenu extends javax.swing.JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object o1) {
-        Personal f = model.getF();
-        nombre.setText(f.getNombre());
-        ape1.setText(f.getApellido1());
-        ape2.setText(f.getApellido2());
-        ced.setText(f.getCedula());
+        Personal f = model.getFunction();
+        nombre.setText(f.getName());
+        ape1.setText(f.getFatherLastName());
+        ape2.setText(f.getMotherLastName());
+        ced.setText(f.getDocumentId());
         int r = f.getRol();
         if(r == 1){
             admi.setEnabled(true);

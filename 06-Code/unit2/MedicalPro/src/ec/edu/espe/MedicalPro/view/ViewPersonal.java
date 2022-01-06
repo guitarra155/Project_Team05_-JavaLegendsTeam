@@ -46,18 +46,18 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
 
     @Override
     public void update(Observable o, Object o1) {
-        Personal f = model.getF();
-        if(model.isEditar()){
+        Personal f = model.getFuntion();
+        if(model.isEdit()){
             ahabilitar();
             textCed.setEnabled(true);
         }
-        tablita.setModel(model.getTablita());
-        textNombre.setText(f.getNombre());
-        textApe1.setText(f.getApellido1());
-        textApe2.setText(f.getApellido2());
-        textCed.setText(f.getCedula());
-        textClave.setText(f.getClave());
-        textUser.setText(f.getUsuario());
+        tablita.setModel(model.getColumns());
+        textNombre.setText(f.getName());
+        textApe1.setText(f.getFatherLastName());
+        textApe2.setText(f.getMotherLastName());
+        textCed.setText(f.getDocumentId());
+        textClave.setText(f.getPassword());
+        textUser.setText(f.getUsername());
         comRol.setSelectedIndex(f.getRol());
         textBuscar.setText("");
     }
@@ -422,7 +422,7 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         String pass = textClave.getText();
         int rol = comRol.getSelectedIndex();
         if(valida(nom, ape1, ape2, ced, user, pass)){
-            control.add(model.isEditar(), nom, ape1, ape2, ced, rol, user, pass);
+            control.add(model.isEdit(), nom, ape1, ape2, ced, rol, user, pass);
             desahabilitar();
         }
     }//GEN-LAST:event_btnGuardar3ActionPerformed

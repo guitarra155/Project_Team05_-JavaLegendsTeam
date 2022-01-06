@@ -208,9 +208,9 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
     
     @Override
     public void update(Observable o, Object o1) {
-        Personal f = model.getF();
-        TxtPss.setText(f.getClave());
-        textuser.setText(f.getUsuario());
+        Personal f = model.getFuntion();
+        TxtPss.setText(f.getPassword());
+        textuser.setText(f.getUsername());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

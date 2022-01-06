@@ -40,12 +40,12 @@ public class ControlLoggin {
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
-            model.setF(new Personal());
+            model.setFuntion(new Personal());
         }
     }
 
     public void init() {
-        model.setF(new Personal());
+        model.setFuntion(new Personal());
         view.setVisible(true);
     }
 
