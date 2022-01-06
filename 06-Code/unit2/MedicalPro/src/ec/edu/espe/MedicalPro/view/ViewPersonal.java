@@ -1,5 +1,9 @@
 package ec.edu.espe.MedicalPro.view;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
 import ec.edu.espe.MedicalPro.controller.ControlPersonal;
 import ec.edu.espe.MedicalPro.controller.Personal;
 import ec.edu.espe.MedicalPro.model.ModelF;
@@ -423,10 +427,45 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         int rol = comRol.getSelectedIndex();
         if(valida(nom, ape1, ape2, ced, user, pass)){
             control.add(model.isEdit(), nom, ape1, ape2, ced, rol, user, pass);
+            MongoClient mongo = createConnection();
+            if(mongo != null ){
+                DB db = mongo.getDB("DataBaseMedicalPro");
+                System.out.println("DATABASE CREATED ");
+                insertData(db,"Personal MedicalPro",nom, ape1, ape2, ced, rol, user, pass);
+            }  
             desahabilitar();
         }
     }//GEN-LAST:event_btnGuardar3ActionPerformed
 
+    public static MongoClient createConnection(){
+        
+
+        MongoClient mongoClient = new MongoClient( "localhost",27017); 
+        System.out.println("Created Mongo Connection successfully"); 
+        
+        if(mongoClient != null) {
+            System.out.println("LIST ALREADY CREATED");
+        }else {
+          System.out.println("ERROR: Conexión no establecida");
+        }
+        
+        return mongoClient;
+    }
+    
+    
+    public static void insertData(DB db,String collection,String name,String firstLastName,String secondtLastName,String id,int rol,String userName,String password){
+        DBCollection colec = db.getCollection(collection);
+        BasicDBObject documento = new BasicDBObject();
+        documento.put("nombre", name);
+        documento.put("First Name", firstLastName);
+        documento.put("Second Name", secondtLastName);
+        documento.put("Identifi", id);
+        documento.put("rol", rol);
+        documento.put("User Name", userName);
+        documento.put("Password", password);
+        colec.insert (documento);
+    }
+    
     private void btnNuevo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevo3ActionPerformed
         ahabilitar();
     }//GEN-LAST:event_btnNuevo3ActionPerformed

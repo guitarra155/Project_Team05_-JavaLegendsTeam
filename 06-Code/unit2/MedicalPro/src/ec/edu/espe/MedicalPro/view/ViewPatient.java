@@ -1,5 +1,9 @@
 package ec.edu.espe.MedicalPro.view;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
 import ec.edu.espe.MedicalPro.controller.ControlPatient;
 import ec.edu.espe.MedicalPro.controller.Patient;
 import ec.edu.espe.MedicalPro.model.ModelI;
@@ -8,6 +12,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -448,17 +453,47 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         String ape2 = textApe2.getText();
         String ced = textCed.getText();
         String pato = textArea.getText();
-//        String fe = (new SimpleDateFormat("dd/MM/yyyy").format(fecha.getValue().toString()));   
-//        String fe = fecha.getValue().toString();
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String fe = formatter.format(fecha.getValue());
+        
         if(valida(nom, ape1, ape2, ced, pato)){
-            control.agregar(model.isColumns(), nom, ape1, ape2, ced, pato, fe);            
+            control.agregar(model.isColumns(), nom, ape1, ape2, ced, pato, fe); 
+            MongoClient mongo = createConnection();
+            DB db = mongo.getDB("DataBaseMedicalPro");
+                System.out.println("DATABASE CREATED ");
+                insertData(db,"Patients MedicalPro",nom, ape1, ape2, ced, pato, fe);
             desahabilitar();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+      public static MongoClient createConnection(){
+        
 
+        MongoClient mongoClient = new MongoClient( "localhost",27017); 
+        System.out.println("Created Mongo Connection successfully"); 
+        
+        if(mongoClient != null) {
+            System.out.println("LIST ALREADY CREATED");
+        }else {
+          System.out.println("ERROR: Conexión no establecida");
+        }
+        
+        return mongoClient;
+    }
+    
+    public static void insertData(DB db,String collection,String name,String firstLastName,String secondtLastName,String id,String patology,String dateInfo){
+        DBCollection colec = db.getCollection(collection);
+        BasicDBObject documento = new BasicDBObject();
+        documento.put("nombre", name);
+        documento.put("First Name", firstLastName);
+        documento.put("Second Name", secondtLastName);
+        documento.put("Identifi", id);
+        documento.put("Patology", patology);
+        documento.put("Date", dateInfo);
+        colec.insert (documento);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ape1;
     private javax.swing.JLabel ape2;
