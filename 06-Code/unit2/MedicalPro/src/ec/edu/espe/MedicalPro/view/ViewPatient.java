@@ -1,24 +1,25 @@
 package ec.edu.espe.MedicalPro.view;
-
+import org.bson.Document;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.MedicalPro.controller.ControlPatient;
 import ec.edu.espe.MedicalPro.controller.Patient;
 import ec.edu.espe.MedicalPro.model.ModelI;
-import java.awt.Color;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Grupo 05 JavaLegends 
@@ -305,6 +306,11 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         jScrollPane1.setViewportView(tablita);
 
         textBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        textBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBuscarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -432,11 +438,18 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         int x = tablita.getSelectedRow();
         if (x >= 0) {
             control.eliminar(x);
-        } else {
+            String nameSelected = tablita.getValueAt(x, 0).toString();
+            MongoClient mongo = createConnection();
+            DB db = mongo.getDB("DataBaseMedicalPro");
+            EraseDataPatients(db,"PatientsMedicalPro",nameSelected);
+            } else {
             JOptionPane.showMessageDialog(null, "Choose the patient to eliminate");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    public static void EraseDataPatients(DB db, String coleccion, String name) {
+        DBCollection colec = db.getCollection(coleccion);
+        colec.remove(new BasicDBObject().append("Name",name));
+    }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         control.cancelar();
         desahabilitar();
@@ -460,31 +473,25 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
             control.agregar(model.isColumns(), nom, ape1, ape2, ced, pato, fe); 
             MongoClient mongo = createConnection();
             DB db = mongo.getDB("DataBaseMedicalPro");
-                System.out.println("DATABASE CREATED ");
-                insertData(db,"Patients MedicalPro",nom, ape1, ape2, ced, pato, fe);
+            System.out.println("DATABASE CREATED ");
+            insertData(db,"PatientsMedicalPro",nom, ape1, ape2, ced, pato, fe);
             desahabilitar();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-      public static MongoClient createConnection(){
-        
+    private void textBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBuscarActionPerformed
 
+public static MongoClient createConnection(){
         MongoClient mongoClient = new MongoClient( "localhost",27017); 
-        System.out.println("Created Mongo Connection successfully"); 
-        
-        if(mongoClient != null) {
-            System.out.println("LIST ALREADY CREATED");
-        }else {
-          System.out.println("ERROR: Conexión no establecida");
-        }
-        
         return mongoClient;
     }
     
     public static void insertData(DB db,String collection,String name,String firstLastName,String secondtLastName,String id,String patology,String dateInfo){
         DBCollection colec = db.getCollection(collection);
         BasicDBObject documento = new BasicDBObject();
-        documento.put("nombre", name);
+        documento.put("Name", name);
         documento.put("First Name", firstLastName);
         documento.put("Second Name", secondtLastName);
         documento.put("Identifi", id);

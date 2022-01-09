@@ -431,7 +431,7 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
             if(mongo != null ){
                 DB db = mongo.getDB("DataBaseMedicalPro");
                 System.out.println("DATABASE CREATED ");
-                insertData(db,"Personal MedicalPro",nom, ape1, ape2, ced, rol, user, pass);
+                insertData(db,"PersonalMedicalPro",nom, ape1, ape2, ced, rol, user, pass);
             }  
             desahabilitar();
         }
@@ -451,7 +451,6 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         
         return mongoClient;
     }
-    
     
     public static void insertData(DB db,String collection,String name,String firstLastName,String secondtLastName,String id,int rol,String userName,String password){
         DBCollection colec = db.getCollection(collection);
@@ -501,6 +500,11 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public static void EraseDataPersonal(DB db, String coleccion, String nombre) {
+        DBCollection colec = db.getCollection(coleccion);
+        colec.remove(new BasicDBObject().append("pais", nombre));
+    }
+    
     private void comRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comRolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comRolActionPerformed
@@ -508,8 +512,6 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
     private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textNombreActionPerformed
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ape7;
