@@ -8,8 +8,6 @@ import ec.edu.espe.MedicalPro.model.ModelF;
 import ec.edu.espe.MedicalPro.model.ModelI;
 import ec.edu.espe.MedicalPro.model.ModelPre;
 import ec.edu.espe.MedicalPro.model.ModelLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *

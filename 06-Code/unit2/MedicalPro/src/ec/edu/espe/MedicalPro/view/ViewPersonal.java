@@ -96,6 +96,7 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -310,14 +311,13 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Personal List");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setText("Don't erase Edison");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,6 +331,14 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(265, 265, 265))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,7 +353,9 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(61, 61, 61))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -438,28 +448,18 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_btnGuardar3ActionPerformed
 
     public static MongoClient createConnection(){
-        
-
         MongoClient mongoClient = new MongoClient( "localhost",27017); 
-        System.out.println("Created Mongo Connection successfully"); 
-        
-        if(mongoClient != null) {
-            System.out.println("LIST ALREADY CREATED");
-        }else {
-          System.out.println("ERROR: Conexión no establecida");
-        }
-        
         return mongoClient;
     }
     
     public static void insertData(DB db,String collection,String name,String firstLastName,String secondtLastName,String id,int rol,String userName,String password){
         DBCollection colec = db.getCollection(collection);
         BasicDBObject documento = new BasicDBObject();
-        documento.put("nombre", name);
+        documento.put("Name", name);
         documento.put("First Name", firstLastName);
         documento.put("Second Name", secondtLastName);
         documento.put("Identifi", id);
-        documento.put("rol", rol);
+        documento.put("Rol", rol);
         documento.put("User Name", userName);
         documento.put("Password", password);
         colec.insert (documento);
@@ -494,15 +494,20 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int x = tablita.getSelectedRow();
         if(x >= 0){
+            String nameSelected = tablita.getValueAt(x,1).toString();
+            System.out.println(nameSelected);
+            MongoClient mongo = createConnection();
+            DB db = mongo.getDB("DataBaseMedicalPro");
+            EraseDataPatients(db,"PersonalMedicalPro",nameSelected);
             control.delete(x);
         }else{
             JOptionPane.showMessageDialog(null, "Choose the patient to eliminate");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public static void EraseDataPersonal(DB db, String coleccion, String nombre) {
+    public static void EraseDataPatients(DB db, String coleccion, String name) {
         DBCollection colec = db.getCollection(coleccion);
-        colec.remove(new BasicDBObject().append("pais", nombre));
+        colec.remove(new BasicDBObject().append("Name",name));
     }
     
     private void comRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comRolActionPerformed
@@ -529,6 +534,7 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
