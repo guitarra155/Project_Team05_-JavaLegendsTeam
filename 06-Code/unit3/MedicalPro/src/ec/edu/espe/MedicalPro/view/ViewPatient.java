@@ -24,28 +24,24 @@ import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import utils.Connection;
+
 /**
  *
- * @author Grupo 05 JavaLegends 
- * Insuasti
- * Guzman
- * Guitarra
- * Landazuri
- * Lincango
+ * @author Grupo 05 JavaLegends Insuasti Guzman Guitarra Landazuri Lincango
  */
 
 public class ViewPatient extends javax.swing.JInternalFrame implements Observer {
+
     MongoCollection<Document> ListPatients = new Connection().obtenerDB().getCollection("PatientsMedicalPro");
     private ModelI model;
     private ControlPatient control;
-    
+
     DefaultTableModel table = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
     };
-    
 
     public ViewPatient() {
         initComponents();
@@ -471,19 +467,20 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    
+
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         int x = tablePatients.getSelectedRow();
         int option;
-       option = JOptionPane.showConfirmDialog(this,"are you sure you want to eliminate whit Serie :"+tablePatients.getValueAt(tablePatients.getSelectedRow(),2).toString());
-       if(option == 0){
+        option = JOptionPane.showConfirmDialog(this, "are you sure you want to eliminate whit Serie :" + tablePatients.getValueAt(tablePatients.getSelectedRow(), 2).toString());
+        if (option == 0) {
             Delete();
             control.eliminar(x);
-       }if(option == JOptionPane.NO_OPTION){
-           JOptionPane.showMessageDialog(this,"Series :" + tablePatients.getValueAt(tablePatients.getSelectedRow(),2).toString()+", not deleted");
-       }
+        }
+        if (option == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(this, "Series :" + tablePatients.getValueAt(tablePatients.getSelectedRow(), 2).toString() + ", not deleted");
+        }
     }//GEN-LAST:event_btnRemoveActionPerformed
-    
+
     public boolean Delete() {
         try {
             String id = tablePatients.getValueAt(tablePatients.getSelectedRow(), 3).toString();
@@ -495,7 +492,7 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
             return false;
         }
     }
-    
+
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 //        control.cancelar();
         desahabilitar();
@@ -507,7 +504,7 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       
+
         String nom = txtName.getText();
         String ape1 = txtFirstLastName.getText();
         String ape2 = txtSecondLastName.getText();
@@ -515,33 +512,29 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         String pato = txtDiagnosis.getText();
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String fe = formatter.format(txtDateOfBirth.getValue());
-        
+
         InsertNewBed(fe);
         ShowAll();
-        
+
     }//GEN-LAST:event_btnAddActionPerformed
- 
-    public void InsertNewBed(String date){
-        try{
+
+    public void InsertNewBed(String date) {
+        try {
             Document data = new Document();
             data.put("Name", txtName.getText());
             data.put("Father Last Name", txtFirstLastName.getText());
             data.put("Mother Last Name", txtSecondLastName.getText());
-            data.put("Document ID",Integer.parseInt(txtDocumentId.getText()));
-            data.put("Date of admission",date);   
-            data.put("Diagnosis",txtDiagnosis.getText());
-            
+            data.put("Document ID", Integer.parseInt(txtDocumentId.getText()));
+            data.put("Date of admission", date);
+            data.put("Diagnosis", txtDiagnosis.getText());
             ListPatients.insertOne(data);
+            JOptionPane.showMessageDialog(this, "Successfully Insert Serie:" + Integer.parseInt(txtDocumentId.getText().toString()));
+        } catch (Exception err) {
+            JOptionPane.showMessageDialog(this, "ERROR: " + err.getMessage());
 
-            JOptionPane.showMessageDialog(this, "Successfully Insert Serie:" + Integer.parseInt(txtDocumentId.getText().toString()) );
-
-            }catch(Exception err){
-
-                JOptionPane.showMessageDialog(this, "ERROR: " + err.getMessage());
-
-            }
+        }
     }
-    
+
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
@@ -550,18 +543,6 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQueryValueActionPerformed
 
-    public static void insertData(DB db,String collection,String name,String firstLastName,String secondtLastName,String id,String patology,String dateInfo){
-        DBCollection colec = db.getCollection(collection);
-        BasicDBObject documento = new BasicDBObject();
-        documento.put("Name", name);
-        documento.put("First Name", firstLastName);
-        documento.put("Second Name", secondtLastName);
-        documento.put("Identifi", id);
-        documento.put("Patology", patology);
-        documento.put("Date", dateInfo);
-        colec.insert (documento);
-    }
-       
     public void ShowAll() {
         try {
             MongoCursor<Document> contact = ListPatients.find().iterator();

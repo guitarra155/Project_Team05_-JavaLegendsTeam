@@ -54,16 +54,17 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
 
         jPanel1 = new javax.swing.JPanel();
         user = new javax.swing.JLabel();
-        textuser = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
         password = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        TxtPss = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtPss = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        lblErrortxtUser = new javax.swing.JLabel();
+        lblErrorPss = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -74,7 +75,17 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
         user.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         user.setText("Username");
 
-        textuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUserKeyReleased(evt);
+            }
+        });
 
         password.setBackground(new java.awt.Color(255, 255, 0));
         password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -98,18 +109,23 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("MEDICALPRO");
 
-        TxtPss.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        TxtPss.addActionListener(new java.awt.event.ActionListener() {
+        txtPss.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPss.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPssActionPerformed(evt);
+                txtPssActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Trial version");
+        txtPss.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPssKeyReleased(evt);
+            }
+        });
 
         jLabel2.setText("Useername:    001");
 
         jLabel5.setText("Password:       001");
+
+        lblErrortxtUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,31 +136,33 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(password)
+                            .addComponent(user))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(password)
-                                    .addComponent(user))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jButton1))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(textuser, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TxtPss, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jButton1)
-                                        .addGap(75, 75, 75)
-                                        .addComponent(jButton2))))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPss, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblErrortxtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblErrorPss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel2))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +172,9 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
-                                .addComponent(textuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblErrortxtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(user)
@@ -162,7 +182,8 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
                         .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(password)
-                            .addComponent(TxtPss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblErrorPss, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,9 +193,7 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(93, 93, 93)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
@@ -207,8 +226,8 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(valida()){
             try {
-                String usuario = textuser.getText();
-                String clave = TxtPss.getText();
+                String usuario = txtUser.getText();
+                String clave = txtPss.getText();
                 control.getAcceso(usuario, clave);
             } catch (Exception ex) {
 
@@ -216,18 +235,48 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void TxtPssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPssActionPerformed
+    private void txtPssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPssActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPssActionPerformed
+    }//GEN-LAST:event_txtPssActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
+
+    private void txtUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyReleased
+        String temp = "";
+        if(evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9'){
+            lblErrortxtUser.setEnabled(false);
+        }else{
+            lblErrortxtUser.setEnabled(true);
+            System.out.println(txtUser.getText());
+            lblErrortxtUser.setText("Only Numbers");
+            temp = txtUser.getText().replaceFirst(".$","");
+            txtUser.setText(temp);
+        }
+    }//GEN-LAST:event_txtUserKeyReleased
+
+    private void txtPssKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPssKeyReleased
+        String temp = "";
+        if(evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9'){
+            lblErrorPss.setEnabled(false);
+        }else{
+            lblErrorPss.setEnabled(true);
+            System.out.println(txtPss.getText());
+            lblErrorPss.setText("Only Numbers");
+            temp = txtPss.getText().replaceFirst(".$","");
+            txtPss.setText(temp);
+        }
+    }//GEN-LAST:event_txtPssKeyReleased
 
     private boolean valida() {
         user.setForeground(Color.WHITE);
-        if(textuser.getText().isEmpty()){
+        if(txtUser.getText().isEmpty()){
             user.setForeground(Color.red);
             return false;
         }
         password.setForeground(Color.white);
-        if(TxtPss.getText().isEmpty()){
+        if(txtPss.getText().isEmpty()){
             password.setForeground(Color.red);
             return false;
         }
@@ -237,22 +286,23 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
     @Override
     public void update(Observable o, Object o1) {
         Personal f = model.getFuntion();
-        TxtPss.setText(f.getPassword());
-        textuser.setText(f.getUsername());
+        txtPss.setText(f.getPassword());
+        txtUser.setText(f.getUsername());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TxtPss;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblErrorPss;
+    private javax.swing.JLabel lblErrortxtUser;
     private javax.swing.JLabel password;
-    private javax.swing.JTextField textuser;
+    private javax.swing.JTextField txtPss;
+    private javax.swing.JTextField txtUser;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 
