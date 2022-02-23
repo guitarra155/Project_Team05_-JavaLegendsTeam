@@ -2,8 +2,13 @@ package ec.edu.espe.MedicalPro.controller;
 
 
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+import utils.Connection;
 
 /**
  *
@@ -131,5 +136,23 @@ public class Personal {
             return null;
         }
     }
-
+    public static void createPersonal(String Name, String fatherLastName, String motherLastName, String DocumentId, int rol, String Password, String Username){
+        MongoCollection<Document> Personal = new Connection().obtenerDB().getCollection("Personal");
+        Document documento = new Document();
+        
+        documento.put("Name", Name);
+        documento.put("Father LastName", fatherLastName);
+        documento.put("Mother LastName",motherLastName);
+        documento.put("DocumentId",DocumentId);
+        documento.put("Date", rol);
+        documento.put("Password", Password);
+        documento.put("Username", Username);
+        
+        Personal.insertOne(documento);
+    }
+    public static boolean deletePersonal(String id){
+        MongoCollection<Document> Personal = new Connection().obtenerDB().getCollection("Personal");
+        DeleteResult answer = Personal.deleteOne(new Document("_id", new ObjectId(id)));
+        return true;
+    }
 }

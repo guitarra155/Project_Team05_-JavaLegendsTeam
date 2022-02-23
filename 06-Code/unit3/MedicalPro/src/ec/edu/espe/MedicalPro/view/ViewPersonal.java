@@ -4,12 +4,17 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
 import ec.edu.espe.MedicalPro.controller.ControlPersonal;
 import ec.edu.espe.MedicalPro.controller.Personal;
 import ec.edu.espe.MedicalPro.model.ModelF;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+import utils.Connection;
 
 /**
  *
@@ -23,6 +28,7 @@ import javax.swing.JOptionPane;
 
 public class ViewPersonal extends javax.swing.JInternalFrame implements Observer{
 
+    MongoCollection<Document> ListPersonal = new Connection().obtenerDB().getCollection("Personal");
     private ModelF model;
     private ControlPersonal control;
     
@@ -435,16 +441,11 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         String user = textUser.getText();
         String pass = textClave.getText();
         int rol = comRol.getSelectedIndex();
-        if(valida(nom, ape1, ape2, ced, user, pass)){
-            control.add(model.isEdit(), nom, ape1, ape2, ced, rol, user, pass);
-            MongoClient mongo = createConnection();
-            if(mongo != null ){
-                DB db = mongo.getDB("DataBaseMedicalPro");
-                System.out.println("DATABASE CREATED ");
-                insertData(db,"PersonalMedicalPro",nom, ape1, ape2, ced, rol, user, pass);
-            }  
-            desahabilitar();
-        }
+        
+        control.add(model.isEdit(), nom, ape1, ape2, ced, rol, user, pass);
+        Personal.createPersonal(nom, ape1, ape2, ced, rol, pass, user);
+        desahabilitar();
+        
     }//GEN-LAST:event_btnGuardar3ActionPerformed
 
     public static MongoClient createConnection(){
@@ -492,23 +493,31 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int x = tablita.getSelectedRow();
-        if(x >= 0){
-            String nameSelected = tablita.getValueAt(x,1).toString();
-            System.out.println(nameSelected);
-            MongoClient mongo = createConnection();
-            DB db = mongo.getDB("DataBaseMedicalPro");
-            EraseDataPatients(db,"PersonalMedicalPro",nameSelected);
-            control.delete(x);
-        }else{
-            JOptionPane.showMessageDialog(null, "Choose the patient to eliminate");
+        int row = tablita.getSelectedRow();
+        String idRemove = tablita.getValueAt(row, 0).toString();
+        int option = JOptionPane.showConfirmDialog(this, "are you sure you want to eliminate whit Serie :" + tablita.getValueAt(tablita.getSelectedRow(), 2).toString());
+        if (option == 0) {
+            Delete();
+            control.delete(row);
+            Personal.deletePersonal(idRemove);
+        }
+        if (option == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(this, "Series :" + tablita.getValueAt(tablita.getSelectedRow(), 2).toString() + ", not deleted");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public static void EraseDataPatients(DB db, String coleccion, String name) {
-        DBCollection colec = db.getCollection(coleccion);
-        colec.remove(new BasicDBObject().append("Name",name));
+    public boolean Delete() {
+        try {
+            String id = tablita.getValueAt(tablita.getSelectedRow(), 3).toString();
+            DeleteResult answer = ListPersonal.deleteOne(new Document("Document ID", new ObjectId(id)));
+            JOptionPane.showMessageDialog(this, "Successfully Removed:" + id);
+            return true;
+        } catch (Exception err) {
+            JOptionPane.showMessageDialog(this, "ERROR: " + err.getMessage());
+            return false;
+        }
     }
+    
     
     private void comRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comRolActionPerformed
         // TODO add your handling code here:

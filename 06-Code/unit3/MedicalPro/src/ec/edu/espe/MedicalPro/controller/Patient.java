@@ -1,9 +1,11 @@
 package ec.edu.espe.MedicalPro.controller;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import utils.Connection;
 
 /**
@@ -129,5 +131,10 @@ public class Patient {
         documento.put("Diagnosis", Diagnosis);
         
         Patients.insertOne(documento);       
+    }
+    public static boolean deletePatient(String id){
+        MongoCollection<Document> Patients = new Connection().obtenerDB().getCollection("Patients");
+        DeleteResult answer = Patients.deleteOne(new Document("_id", new ObjectId(id)));
+        return true;
     }
 }
