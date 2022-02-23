@@ -3,25 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/model/ModelData.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/model/ModelLog.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/ControlPersonal.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/ViewPersonal.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/utils/Connection.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/ControlLoggin.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/model/ModelI.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/ControlPatient.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/Patient.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/ViewMenu.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/medicalPro.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/model/ModelF.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/TableModelI.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/model/ModelPre.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/ViewLoggin.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/Personal.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/ControlMenu.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/ViewPatient.java</file>
-            <file>file:/C:/Users/Mateo%20Landazuri/Desktop/POAO/PROJECT/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/TableModelF.java</file>
+            <file>file:/C:/Users/WINDOWS%2010/Documents/DCO/TSII/OOP/AE/PROJECT%20MEDICALPRO/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/test/ec/edu/espe/MedicalPro/Bill/BillOperationTest.java</file>
         </group>
     </open-files>
 </project-private>
