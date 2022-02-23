@@ -515,12 +515,7 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
 
         InsertNewBed(fe);
         ShowAll();
-<<<<<<< HEAD
 
-=======
-        
-        Patient.createPatient(nom, ape1, ape2, ced, fe, pato);
->>>>>>> e7eb569c484ae112bdd1353ba2b3dcca31a26c5c
     }//GEN-LAST:event_btnAddActionPerformed
 
     public void InsertNewBed(String date) {
