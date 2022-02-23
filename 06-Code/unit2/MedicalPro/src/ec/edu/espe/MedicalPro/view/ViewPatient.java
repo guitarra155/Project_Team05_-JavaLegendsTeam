@@ -7,18 +7,15 @@ import com.mongodb.MongoClient;
 import ec.edu.espe.MedicalPro.controller.ControlPatient;
 import ec.edu.espe.MedicalPro.controller.Patient;
 import ec.edu.espe.MedicalPro.model.ModelI;
-import java.awt.Color;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Grupo 05 JavaLegends 
@@ -305,6 +302,11 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         jScrollPane1.setViewportView(tablita);
 
         textBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        textBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBuscarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -327,27 +329,21 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(textBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(textBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(119, 119, 119)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2)))
-                        .addGap(0, 88, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(119, 119, 119)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +366,7 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -431,12 +427,20 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int x = tablita.getSelectedRow();
         if (x >= 0) {
+            String nameSelected = tablita.getValueAt(x,1).toString();
+            System.out.println(nameSelected);
+            MongoClient mongo = createConnection();
+            DB db = mongo.getDB("DataBaseMedicalPro");
+            EraseDataPatients(db,"PatientsMedicalPro",nameSelected);
             control.eliminar(x);
-        } else {
+            } else {
             JOptionPane.showMessageDialog(null, "Choose the patient to eliminate");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    public static void EraseDataPatients(DB db, String coleccion, String name) {
+        DBCollection colec = db.getCollection(coleccion);
+        colec.remove(new BasicDBObject().append("Name",name));
+    }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         control.cancelar();
         desahabilitar();
@@ -460,31 +464,25 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
             control.agregar(model.isColumns(), nom, ape1, ape2, ced, pato, fe); 
             MongoClient mongo = createConnection();
             DB db = mongo.getDB("DataBaseMedicalPro");
-                System.out.println("DATABASE CREATED ");
-                insertData(db,"Patients MedicalPro",nom, ape1, ape2, ced, pato, fe);
+            System.out.println("DATABASE CREATED ");
+            insertData(db,"PatientsMedicalPro",nom, ape1, ape2, ced, pato, fe);
             desahabilitar();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-      public static MongoClient createConnection(){
-        
+    private void textBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBuscarActionPerformed
 
+public static MongoClient createConnection(){
         MongoClient mongoClient = new MongoClient( "localhost",27017); 
-        System.out.println("Created Mongo Connection successfully"); 
-        
-        if(mongoClient != null) {
-            System.out.println("LIST ALREADY CREATED");
-        }else {
-          System.out.println("ERROR: Conexión no establecida");
-        }
-        
         return mongoClient;
     }
     
     public static void insertData(DB db,String collection,String name,String firstLastName,String secondtLastName,String id,String patology,String dateInfo){
         DBCollection colec = db.getCollection(collection);
         BasicDBObject documento = new BasicDBObject();
-        documento.put("nombre", name);
+        documento.put("Name", name);
         documento.put("First Name", firstLastName);
         documento.put("Second Name", secondtLastName);
         documento.put("Identifi", id);

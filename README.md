@@ -1,2 +1,2 @@
-# Project_Team05_-JavaLegendsTeam
+# Team05_JavaLegendsTeam
 Implementation of a Software for the Medicine Service with object-oriented programming
