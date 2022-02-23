@@ -572,7 +572,8 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         String fe = formatter.format(txtDateOfBirth.getValue());
 
         InsertNewBed(fe);
-        Patient.createPatient(nom, ape1, ape2, ced, pato, fe);
+        control.agregar(isIcon, nom, ape1, ape2, ced, pato, fe);
+//        Patient.createPatient(nom, ape1, ape2, ced, pato, fe);
         ShowAll();
         
     }//GEN-LAST:event_btnAddActionPerformed

@@ -226,9 +226,9 @@ public class ViewLoggin extends javax.swing.JFrame implements Observer{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(valida()){
             try {
-                String usuario = txtUser.getText();
-                String clave = txtPss.getText();
-                control.getAcceso(usuario, clave);
+                String nemaUSer = txtUser.getText();
+                String password = txtPss.getText();
+                control.getAcceso(nemaUSer, password);
             } catch (Exception ex) {
 
             }
