@@ -145,6 +145,9 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         jLabel4 = new javax.swing.JLabel();
         txtFinalValue = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        lblErrortxtDocumentID = new javax.swing.JLabel();
+        lblErrortxtValue = new javax.swing.JLabel();
+        lblErrortxtValueFinal = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
@@ -164,21 +167,41 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         nom.setText("Name");
 
         txtName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
 
         ape1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ape1.setText("Father Last Name");
 
         txtFirstLastName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtFirstLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFirstLastNameKeyTyped(evt);
+            }
+        });
 
         ape2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ape2.setText("Mother Last Name");
 
         txtSecondLastName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtSecondLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSecondLastNameKeyTyped(evt);
+            }
+        });
 
         ced.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ced.setText("Document ID");
 
         txtDocumentId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDocumentId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDocumentIdKeyReleased(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Date of admission");
@@ -226,12 +249,31 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
                 txtQueryValueActionPerformed(evt);
             }
         });
+        txtQueryValue.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtQueryValueKeyReleased(evt);
+            }
+        });
 
         jLabel4.setText("Query Value");
 
         txtFinalValue.setEnabled(false);
+        txtFinalValue.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFinalValueKeyReleased(evt);
+            }
+        });
 
         jLabel7.setText("Final Value");
+
+        lblErrortxtDocumentID.setBackground(new java.awt.Color(204, 0, 0));
+        lblErrortxtDocumentID.setForeground(new java.awt.Color(204, 0, 0));
+
+        lblErrortxtValue.setBackground(new java.awt.Color(204, 0, 0));
+        lblErrortxtValue.setForeground(new java.awt.Color(204, 0, 0));
+
+        lblErrortxtValueFinal.setBackground(new java.awt.Color(153, 0, 0));
+        lblErrortxtValueFinal.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -246,35 +288,43 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ape1)
+                            .addComponent(nom)
+                            .addComponent(ced)
+                            .addComponent(jLabel5)
+                            .addComponent(ape2))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDateOfBirth, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(txtFirstLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSecondLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDocumentId, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(9, 9, 9)
+                                .addComponent(lblErrortxtDocumentID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(pato))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ape1)
-                                    .addComponent(nom)
-                                    .addComponent(ced)
-                                    .addComponent(jLabel5)
-                                    .addComponent(ape2))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtDateOfBirth, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtDocumentId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                        .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtSecondLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtFirstLastName, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(24, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(pato)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFinalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                                    .addComponent(txtQueryValue))))
-                        .addContainerGap(37, Short.MAX_VALUE))))
+                                    .addComponent(txtFinalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(txtQueryValue))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblErrortxtValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblErrortxtValueFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,7 +355,8 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ced)
-                    .addComponent(txtDocumentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDocumentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblErrortxtDocumentID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -313,18 +364,21 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(pato))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(pato)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtQueryValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(lblErrortxtValue, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFinalValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(lblErrortxtValueFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -394,7 +448,7 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
                                 .addComponent(btnSearch)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(41, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,6 +597,78 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQueryValueActionPerformed
 
+    private void txtDocumentIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocumentIdKeyReleased
+            String temp = "";
+        if(evt.getKeyChar()>= '0' && evt.getKeyChar() <= '9'){
+            lblErrortxtDocumentID.setEnabled(false);
+        }else{
+            lblErrortxtDocumentID.setEnabled(true);
+            System.out.println(txtDocumentId.getText());
+            lblErrortxtDocumentID.setText("Only Numbers");
+            temp = txtDocumentId.getText().replaceFirst(".$","");
+            txtDocumentId.setText(temp);
+        }
+    }//GEN-LAST:event_txtDocumentIdKeyReleased
+
+    private void txtSecondLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSecondLastNameKeyTyped
+          char  validar=evt.getKeyChar();
+          if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(rootPane,"Only Letters");
+            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSecondLastNameKeyTyped
+
+    private void txtFirstLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstLastNameKeyTyped
+         char  validar=evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(rootPane,"Only Letters");
+            
+        }
+    }//GEN-LAST:event_txtFirstLastNameKeyTyped
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+         char  validar=evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(rootPane,"Only Letters");
+            
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void txtQueryValueKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQueryValueKeyReleased
+            String temp = "";
+        if(evt.getKeyChar()>= '0' && evt.getKeyChar() <= '9'){
+            lblErrortxtValue.setEnabled(false);
+        }else{
+            lblErrortxtValue.setEnabled(true);
+            System.out.println(txtQueryValue.getText());
+            lblErrortxtValue.setText("Only Numbers");
+            temp = txtQueryValue.getText().replaceFirst(".$","");
+            txtQueryValue.setText(temp);
+        }
+    }//GEN-LAST:event_txtQueryValueKeyReleased
+
+    private void txtFinalValueKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFinalValueKeyReleased
+       String temp = "";
+        if(evt.getKeyChar()>= '0' && evt.getKeyChar() <= '9'){
+            lblErrortxtValueFinal.setEnabled(false);
+        }else{
+            lblErrortxtValueFinal.setEnabled(true);
+            System.out.println(txtFinalValue.getText());
+           lblErrortxtValueFinal.setText("Only Numbers");
+            temp = txtFinalValue.getText().replaceFirst(".$","");
+            txtFinalValue.setText(temp);
+        }
+    }//GEN-LAST:event_txtFinalValueKeyReleased
+
     public void ShowAll() {
         try {
             MongoCursor<Document> contact = ListPatients.find().iterator();
@@ -577,6 +703,9 @@ public class ViewPatient extends javax.swing.JInternalFrame implements Observer 
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblErrortxtDocumentID;
+    private javax.swing.JLabel lblErrortxtValue;
+    private javax.swing.JLabel lblErrortxtValueFinal;
     private javax.swing.JLabel nom;
     private javax.swing.JLabel pato;
     private javax.swing.JTable tablePatients;
