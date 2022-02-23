@@ -1,7 +1,10 @@
 package ec.edu.espe.MedicalPro.controller;
 
+import com.mongodb.client.MongoCollection;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import org.bson.Document;
+import utils.Connection;
 
 /**
  *
@@ -114,5 +117,17 @@ public class Patient {
             return null;
         }
     }
-
+    public static void createPatient(String name, String fatherLastName, String motherLastName, String DocumentId, String Date, String Diagnosis){
+        MongoCollection<Document> Patients = new Connection().obtenerDB().getCollection("Patients");
+        Document documento = new Document();
+        
+        documento.put("Name", name);
+        documento.put("Father LastName", fatherLastName);
+        documento.put("Mother LastName",motherLastName);
+        documento.put("DocumentId",DocumentId);
+        documento.put("Date", Date);
+        documento.put("Diagnosis", Diagnosis);
+        
+        Patients.insertOne(documento);       
+    }
 }

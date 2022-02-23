@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/POO/GRUPO_CODE/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/ViewLoggin.java</file>
             <file>file:/D:/POO/GRUPO_CODE/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/ViewPatient.java</file>
             <file>file:/D:/POO/GRUPO_CODE/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/controller/Patient.java</file>
             <file>file:/D:/POO/GRUPO_CODE/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/utils/Connection.java</file>
             <file>file:/D:/POO/GRUPO_CODE/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/medicalPro.java</file>
+=======
+            <file>file:/C:/Users/WINDOWS%2010/Documents/DCO/TSII/OOP/AE/PROJECT%20MEDICALPRO/Team05_JavaLegendsTeam/06-Code/unit3/MedicalPro/src/ec/edu/espe/MedicalPro/view/ViewPatient.java</file>
+>>>>>>> e7eb569c484ae112bdd1353ba2b3dcca31a26c5c
         </group>
     </open-files>
 </project-private>
