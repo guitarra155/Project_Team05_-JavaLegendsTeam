@@ -1,21 +1,17 @@
 package ec.edu.espe.MedicalPro.controller;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import utils.Connection;
 
 /**
  *
- * @author Grupo 05 JavaLegends 
- * Insuasti
- * Guzman
- * Guitarra
- * Landazuri
- * Lincango
+ * @author Grupo 05 JavaLegends Insuasti Guzman Guitarra Landazuri Lincango
  */
-
 public class Patient {
 
     private String Name;
@@ -116,18 +112,5 @@ public class Patient {
         } catch (Exception e) {
             return null;
         }
-    }
-    public static void createPatient(String name, String fatherLastName, String motherLastName, String DocumentId, String Date, String Diagnosis){
-        MongoCollection<Document> Patients = new Connection().obtenerDB().getCollection("Patients");
-        Document documento = new Document();
-        
-        documento.put("Name", name);
-        documento.put("Father LastName", fatherLastName);
-        documento.put("Mother LastName",motherLastName);
-        documento.put("DocumentId",DocumentId);
-        documento.put("Date", Date);
-        documento.put("Diagnosis", Diagnosis);
-        
-        Patients.insertOne(documento);       
     }
 }

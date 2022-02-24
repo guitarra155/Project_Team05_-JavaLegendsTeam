@@ -1,20 +1,17 @@
 package ec.edu.espe.MedicalPro.controller;
 
-
-
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+import utils.Connection;
 
 /**
  *
- * @author Grupo 05 JavaLegends 
- * Insuasti
- * Guzman
- * Guitarra
- * Landazuri
- * Lincango
+ * @author Grupo 05 JavaLegends Insuasti Guzman Guitarra Landazuri Lincango
  */
-
 public class Personal {
 
     private String name;
