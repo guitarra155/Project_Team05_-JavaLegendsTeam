@@ -90,6 +90,11 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         txtPasswordPersonal = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblErrortxtFirstNameFather = new javax.swing.JLabel();
+        lblErrortxtName = new javax.swing.JLabel();
+        txtErrorMLN = new javax.swing.JLabel();
+        lblErrortxtLastNameMother = new javax.swing.JLabel();
+        lblErrortxtDocumentIdPersonal = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablita = new javax.swing.JTable();
@@ -116,21 +121,41 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
                 textNamePersonalActionPerformed(evt);
             }
         });
+        textNamePersonal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textNamePersonalKeyTyped(evt);
+            }
+        });
 
         ape7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ape7.setText("Father Last Name");
 
         txtFirstNameFather.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtFirstNameFather.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFirstNameFatherKeyTyped(evt);
+            }
+        });
 
         ape8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ape8.setText("Mother Last Name");
 
         txtLastNameMother.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtLastNameMother.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLastNameMotherKeyTyped(evt);
+            }
+        });
 
         ced3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ced3.setText("Document ID");
 
         txtDocumentIdPersonal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDocumentIdPersonal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDocumentIdPersonalKeyTyped(evt);
+            }
+        });
 
         btnAddPersonal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnAddPersonal.setText("Add");
@@ -184,19 +209,14 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ced6)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nom3)
-                                    .addComponent(ape7))
-                                .addGap(24, 24, 24)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFirstNameFather, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textNamePersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ced4)
@@ -213,42 +233,66 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
                                     .addComponent(ced3))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDocumentIdPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLastNameMother, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lstTypeOfCharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPasswordPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUserPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtLastNameMother, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtErrorMLN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lstTypeOfCharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPasswordPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtUserPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDocumentIdPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 13, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nom3)
+                                        .addComponent(ape7))
+                                    .addGap(24, 24, 24)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtFirstNameFather, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textNamePersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblErrortxtFirstNameFather, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblErrortxtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblErrortxtLastNameMother, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 39, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblErrortxtDocumentIdPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nom3)
-                    .addComponent(textNamePersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textNamePersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblErrortxtName, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ape7)
-                    .addComponent(txtFirstNameFather, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFirstNameFather, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblErrortxtFirstNameFather, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLastNameMother, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ape8))
+                    .addComponent(ape8)
+                    .addComponent(txtErrorMLN)
+                    .addComponent(lblErrortxtLastNameMother))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ced3)
-                    .addComponent(txtDocumentIdPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDocumentIdPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblErrortxtDocumentIdPersonal))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ced4)
@@ -362,7 +406,7 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -424,11 +468,6 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
         txtUserPersonal.setEnabled(true);
         txtPasswordPersonal.setEnabled(true);
     }
-
-    private void btnAddPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonalActionPerformed
-        InsertNewPatient();
-        desahabilitar();
-    }//GEN-LAST:event_btnAddPersonalActionPerformed
     public void InsertNewPatient() {
         String nom = textNamePersonal.getText();
         String ape1 = txtFirstNameFather.getText();
@@ -461,15 +500,6 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
     }
 
 
-    private void btnNewPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPersonalActionPerformed
-        ahabilitar();
-    }//GEN-LAST:event_btnNewPersonalActionPerformed
-
-    private void btnCancelPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelPersonalActionPerformed
-        control.cancel();
-        desahabilitar();
-    }//GEN-LAST:event_btnCancelPersonalActionPerformed
-
     private void tablitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablitaMouseClicked
         if (evt.getClickCount() == 2) {
             control.eddit();
@@ -501,6 +531,75 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
 //        }
     }//GEN-LAST:event_btnRemoveFunctionariActionPerformed
 
+    private void lstTypeOfChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstTypeOfChargeActionPerformed
+
+    }//GEN-LAST:event_lstTypeOfChargeActionPerformed
+
+    private void btnCancelPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelPersonalActionPerformed
+        control.cancel();
+        desahabilitar();
+    }//GEN-LAST:event_btnCancelPersonalActionPerformed
+
+    private void btnNewPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPersonalActionPerformed
+        ahabilitar();
+    }//GEN-LAST:event_btnNewPersonalActionPerformed
+
+    private void btnAddPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonalActionPerformed
+        InsertNewPatient();
+        desahabilitar();
+    }//GEN-LAST:event_btnAddPersonalActionPerformed
+
+    private void textNamePersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNamePersonalActionPerformed
+
+    }//GEN-LAST:event_textNamePersonalActionPerformed
+
+    private void txtDocumentIdPersonalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocumentIdPersonalKeyTyped
+        // TODO add your handling code here:
+        String temp = "";
+        if(evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9'){
+            lblErrortxtDocumentIdPersonal.setEnabled(false);
+        }else{
+            lblErrortxtDocumentIdPersonal.setEnabled(true);
+            System.out.println(txtDocumentIdPersonal.getText());
+            lblErrortxtDocumentIdPersonal.setText("Only Numbers");
+            temp = txtDocumentIdPersonal.getText().replaceFirst("","");
+            txtDocumentIdPersonal.setText(temp);
+        }
+    }//GEN-LAST:event_txtDocumentIdPersonalKeyTyped
+
+    private void textNamePersonalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNamePersonalKeyTyped
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane, "Only Letters");
+
+        }
+    }//GEN-LAST:event_textNamePersonalKeyTyped
+
+    private void txtFirstNameFatherKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameFatherKeyTyped
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane, "Only Letters");
+
+        }
+    }//GEN-LAST:event_txtFirstNameFatherKeyTyped
+
+    private void txtLastNameMotherKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameMotherKeyTyped
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane, "Only Letters");
+
+        }
+    }//GEN-LAST:event_txtLastNameMotherKeyTyped
+
     public boolean Delete() {
         try {
             Document filter = new Document();
@@ -528,14 +627,6 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
             JOptionPane.showMessageDialog(this, "Series :" + tablita.getValueAt(tablita.getSelectedRow(), 3).toString() + ", not deleted");
         }
     }
-    private void lstTypeOfChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstTypeOfChargeActionPerformed
-
-    }//GEN-LAST:event_lstTypeOfChargeActionPerformed
-
-    private void textNamePersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNamePersonalActionPerformed
-
-    }//GEN-LAST:event_textNamePersonalActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ape7;
     private javax.swing.JLabel ape8;
@@ -555,12 +646,17 @@ public class ViewPersonal extends javax.swing.JInternalFrame implements Observer
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblErrortxtDocumentIdPersonal;
+    private javax.swing.JLabel lblErrortxtFirstNameFather;
+    private javax.swing.JLabel lblErrortxtLastNameMother;
+    private javax.swing.JLabel lblErrortxtName;
     private javax.swing.JComboBox<String> lstTypeOfCharge;
     private javax.swing.JLabel nom3;
     private javax.swing.JTable tablita;
     private javax.swing.JTextField textBuscar;
     private javax.swing.JTextField textNamePersonal;
     private javax.swing.JTextField txtDocumentIdPersonal;
+    private javax.swing.JLabel txtErrorMLN;
     private javax.swing.JTextField txtFirstNameFather;
     private javax.swing.JTextField txtLastNameMother;
     private javax.swing.JPasswordField txtPasswordPersonal;

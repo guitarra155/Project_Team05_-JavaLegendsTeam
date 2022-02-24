@@ -27,7 +27,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" pref="315" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -67,22 +67,15 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="ced6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="nom3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ape7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtFirstNameFather" min="-2" pref="126" max="-2" attributes="0"/>
-                                      <Component id="textNamePersonal" min="-2" pref="108" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="ced4" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -103,25 +96,52 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtDocumentIdPersonal" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Component id="txtLastNameMother" min="-2" pref="126" max="-2" attributes="0"/>
-                                      <Component id="lstTypeOfCharge" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtPasswordPersonal" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                                      <Component id="txtUserPersonal" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="txtLastNameMother" min="-2" pref="126" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtErrorMLN" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lstTypeOfCharge" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtPasswordPersonal" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                                              <Component id="txtUserPersonal" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                              <Component id="txtDocumentIdPersonal" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nom3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ape7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtFirstNameFather" min="-2" pref="126" max="-2" attributes="0"/>
+                                          <Component id="textNamePersonal" min="-2" pref="108" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblErrortxtFirstNameFather" max="32767" attributes="0"/>
+                              <Component id="lblErrortxtName" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblErrortxtLastNameMother" min="-2" pref="48" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="lblErrortxtDocumentIdPersonal" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -130,27 +150,32 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="nom3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textNamePersonal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrortxtName" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ape7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtFirstNameFather" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrortxtFirstNameFather" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtLastNameMother" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ape8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtErrorMLN" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrortxtLastNameMother" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ced3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtDocumentIdPersonal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrortxtDocumentIdPersonal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -195,6 +220,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textNamePersonalActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textNamePersonalKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="ape7">
@@ -211,6 +237,9 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFirstNameFatherKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="ape8">
           <Properties>
@@ -226,6 +255,9 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLastNameMotherKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="ced3">
           <Properties>
@@ -241,6 +273,9 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDocumentIdPersonalKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAddPersonal">
           <Properties>
@@ -337,6 +372,16 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Personal"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblErrortxtFirstNameFather">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblErrortxtName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="txtErrorMLN">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblErrortxtLastNameMother">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblErrortxtDocumentIdPersonal">
         </Component>
       </SubComponents>
     </Container>
